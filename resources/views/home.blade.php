@@ -19,7 +19,13 @@
                 @foreach($events as $event)
                     <div class="card col-md-3">
 
-                        <img src="/img/events/{{ $event->image }}" alt="{{ $event->title }}">
+                        @if ($event->image)
+                            <img src="/img/events/{{ $event->image }}"
+                                alt="{{ $event->title }}">
+                        @else
+                            <img src="/img/banner.jpg"
+                                alt="{{ $event->title }}">
+                        @endif
 
                         <div class="card-body">
                             <p class="card-date">10/09/2020</p>
