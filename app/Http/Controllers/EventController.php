@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -40,5 +41,15 @@ class EventController extends Controller
         $event->save();
 
         return redirect()->route('home')->with('msg', 'Evento criado com sucesso!');
+    }
+
+    public function show($id) {
+        try {
+            $event = Event::findOrFail($id);
+            return view('events.show', ['event' => $event]);
+        } catch (Exception $e) {
+            return redirect()->route('home')->with('msg', 'O Evento não existe');;
+        }
+
     }
 }

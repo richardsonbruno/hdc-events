@@ -23,7 +23,7 @@
                             <img src="/img/events/{{ $event->image }}"
                                 alt="{{ $event->title }}">
                         @else
-                            <img src="/img/banner.jpg"
+                            <img src="/img/event_placeholder.jpg"
                                 alt="{{ $event->title }}">
                         @endif
 
@@ -31,7 +31,7 @@
                             <p class="card-date">10/09/2020</p>
                             <h5 class="card-title">{{ $event->title }}</h5>
                             <p class="card-participants">X Participantes</p>
-                            <a href="#" class="btn btn-primary">Saber mais</a>
+                            <a href="{{ route('show_event', $event->id) }}" class="btn btn-primary">Saber mais</a>
                         </div>
                     </div>
                 @endforeach
